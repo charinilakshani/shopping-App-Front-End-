@@ -1,0 +1,61 @@
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+  <div class="row">
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <label for="productName">Name</label>
+        <input #productName ="ngModel" [(ngModel)] ="products.productName"   name="productName" id="productName" type="text" class="form-control" required>
+        <div class="alert alert-danger " *ngIf="productName.touched && productName.invalid">
+          Ttle s requred
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="price">price</label>
+        <div class="input-group">
+          <span class="input-group-addon"> $ </span>
+          <input #price="ngModel" [(ngModel)] ="products.price" name="price" id="price" type="number" class="form-control" required>
+          <div class="alert alert-danger " *ngIf="price.touched && price.invalid">
+            price required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="category">category</label>
+        <select ngModel   name="category" id="category" class="form-control">
+          <option value=""></option>
+          <option *ngFor="let c of category " [value]="c.name">
+            {{c.name}}
+          </option>
+        </select>
+      </div>
+
+      <!-- #category="ngModel" ngModel name ="category" -->
+      <!-- 
+              <div class ="alert alert-danger " *ngIf="category.touched && category.invalid">
+                price required.
+                       </div> -->
+      <div class="form-group">
+        <label for="quntity">quntity</label>
+        <input #quntity="ngModel" [(ngModel)] ="products.quntity"     name="quntity" id="quntity" type="text" class="form-control" required>
+        <div class="alert alert-danger " *ngIf="quntity.touched && quntity.invalid">
+          Ttle s requred
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="image">Image UrL</label>
+        <input #image="ngModel" [(ngModel)] ="products.image"  name="image" id="image" type="text" class="form-control" required>
+        <div class="alert alert-danger " *ngIf="image.touched && image.invalid">
+          price required.
+        </div>
+      </div>
+      <button class="btn btn-primary"> save </button>
+    </div>
+    <div class="col-md-6">
+     <product-cart [products]="products" [show-actions] ="false"> </product-cart>
+    </div>
+
+  </div>
+</form>
