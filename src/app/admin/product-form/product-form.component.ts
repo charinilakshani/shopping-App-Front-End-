@@ -20,8 +20,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     categoryservice: CategoryService,
     private productservice: ProductService,
-  )
-   {
+  ) {
     categoryservice.getCategory().subscribe(res => {
       this.category = res;
     });
@@ -32,18 +31,22 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
   }
   save(products) {
-    console.log("aid",this.aid);
-    if(this.aid){
-      console.log("workign",this.aid);
-      this.productservice.updateProduct(products);
+    console.log("aid", this.aid);
+
+    if (this.aid) {
+      this.productservice.updateProduct(products).subscribe(data => {
+        console.log(" update product", data);
+      });
 
     } else {
-      this.productservice.addNewProduct(products);
-       console.log("products from ", products);
-    }  
+      this.productservice.addNewProduct(products).subscribe(data => {
+        console.log(" add new product", data);
+      });
+
+    }
   }
-  ngOnInit() {}
-  
+  ngOnInit() { }
+
   ngOnDestroy() {
     // this.subscription.unsubscribe();
   }

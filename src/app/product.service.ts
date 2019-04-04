@@ -10,37 +10,17 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
   url = "http://localhost:8080/all";
-  url1 = "http://localhost:8080/add";
-  url2 ="http://localhost:8080";
+  url1 = "http://localhost:8080/addProduct";
+  url2 = "http://localhost:8080";
   url3 = "http://localhost:8080/update";
 
-
-  create(products: Products) {
-    return this.http.post<Products>(this. url1+"add products to database", products).
-            subscribe(products => {
-              console.log(products.productName + " sucessfully added")
-            },
-            error => {
-              console.log(products.productName + "not workinggggggggggggggggggggggg"+ error)
-            });
-  }
- 
-  addNewProduct(products) {
-    let sendProduct = {
-      productName: products.productName,
-      category:products.category,
-      price: products.price,
-      quntity:products. number,
-      description:products.description,
-      image: products.image,
-  
-    };
-    console.log(" send new product",sendProduct);
-    return this.http.post(this. url2, sendProduct);
+  addNewProduct(Products) {
+    console.log( Products);
+    return this.http.post(this.url1,Products);
   }
 
   updateProduct(Products) {
-    console. log("update from front service",this.http.put(this.url3, Products));
+    console.log("update from front service", this.http.put(this.url3, Products));
     return this.http.put(this.url3, Products);
   }
 
@@ -51,7 +31,7 @@ export class ProductService {
   }
 
   getOneProducts(pid) {
-  console.log("get all products", this.http.get<Products[]>(this.url2 +  `/${pid}`))
+    console.log("get all products", this.http.get<Products[]>(this.url2 + `/${pid}`))
     return this.http.get<Products>(this.url2 + `/${pid}`);
     // return 
   }
