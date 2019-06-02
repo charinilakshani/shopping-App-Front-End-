@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6">
 
-      <input #aid="ngModel" [(ngModel)]="products.aid" name="aid" id="aid" type="text" class="form-control" readonly="true">
+      <input #pId="ngModel" [(ngModel)]="products.pId" name="pId" id="pId" type="text" class="form-control" readonly="true">
 
       <div class="form-group">
         <label for="productName">Name</label>
@@ -41,16 +41,16 @@
                 price required.
                        </div> -->
       <div class="form-group">
-        <label for="quntity">quntity</label>
-        <input #quntity="ngModel" [(ngModel)]="products.quntity" name="quntity" id="quntity" type="text"
+        <label for="quantity">quantity</label>
+        <input #quantity="ngModel" [(ngModel)]="products.quantity" name="quantity" id="quantity" type="text"
           class="form-control" required>
-        <div class="alert alert-danger " *ngIf="quntity.touched && quntity.invalid">
+        <div class="alert alert-danger " *ngIf="quantity.touched && quantity.invalid">
           Ttle s requred
         </div>
 
       </div>
       <div class="form-group">
-        <label for="image">Image UrL</label>
+        <label for="image">image UrL</label>
         <input #image="ngModel" [(ngModel)]="products.image" name="image" id="image" type="text" class="form-control"
           required>
         <div class="alert alert-danger " *ngIf="image.touched && image.invalid">

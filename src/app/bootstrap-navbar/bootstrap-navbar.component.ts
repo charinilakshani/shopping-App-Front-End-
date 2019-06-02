@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingCartService } from '../services/shopping-cart.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'bootstrap-navbar',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BootstrapNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService:AuthenticationService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+     
+    }
 
 }

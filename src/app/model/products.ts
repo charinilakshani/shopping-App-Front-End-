@@ -1,10 +1,10 @@
 export interface Products {
-	aid: number;
+	pId: number;
 	productName: string;
 	category: string;
 	price: number;
-	quntity: number;
+	quantity: number;
 	description: string;
-	Image: string;
+	image: string;
 
 }

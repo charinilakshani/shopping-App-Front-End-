@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CategoryService } from 'src/app/category.service';
-import { ProductService } from 'src/app/product.service';
+import { CategoryService } from 'src/app/services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -13,7 +13,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   category;
   products = {};
   subsription;
-  aid;
+  pId;
 
   constructor(
     private router: Router,
@@ -21,19 +21,20 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     categoryservice: CategoryService,
     private productservice: ProductService,
   ) {
-    categoryservice.getCategory().subscribe(res => {
-      this.category = res;
-    });
+    // categoryservice.getCategory().subscribe(res => {
+    //   this.category = res;
+    // });
 
-    this.aid = this.route.snapshot.paramMap.get('aid');
-    if (this.aid)
-      productservice.getOneProducts(this.aid).pipe(take(1)).subscribe(p => this.products = p)
+    this.pId = this.route.snapshot.paramMap.get('pId');
+    console.log(" product form  product Id ", this. pId)
+    if (this.pId)
+      productservice.getOneProducts(this.pId).pipe(take(1)).subscribe(p => this.products = p)
 
   }
   save(products) {
-    console.log("aid", this.aid);
+    console.log("pId", this.pId);
 
-    if (this.aid) {
+    if (this.pId) {
       this.productservice.updateProduct(products).subscribe(data => {
         console.log(" update product", data);
       });
@@ -42,7 +43,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       this.productservice.addNewProduct(products).subscribe(data => {
         console.log(" add new product", data);
       });
-
     }
   }
   ngOnInit() { }

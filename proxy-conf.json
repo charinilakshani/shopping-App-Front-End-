@@ -1,0 +1,9 @@
+{
+    "/api": {
+        "target": "http://c-cafe.herokuapp.com/api",
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api": ""
+        }
+    }
+}

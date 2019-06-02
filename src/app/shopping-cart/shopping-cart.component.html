@@ -1,3 +1,57 @@
-<p>
-  shopping-cart works!
-</p>
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted">Your cart have </span>
+    <span class="badge badge-secondary badge-pill">{{cartLength}}</span>
+    <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let item of cartList"></li>
+  </h4>
+
+
+
+<div class="container cart">
+  <table class="table" >
+      <thead>
+          <tr>
+            <th>ProductName</th>
+            <th> description</th>
+            <th>quantity</th>
+            <th>price</th>
+            <th> final Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cartItem of cartItems; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{cartLength}}</td>
+            <td>
+              
+              <!-- <input class="form-row col-3 form-control" type="number" value="{{cartItem.quantity}}" min="1" (change)="onQtyChange($event.target.value, i)"> -->
+              <div   class="row  no-gutters"> 
+                <div class="col-2">
+                <button (click)= "removeFromCart(cartItem);$event.stopPropagation()"
+                class="btn btn-secondary btn-block"> - </button>
+                </div>
+                <div class="col text-center">
+                  <!-- {{ getQuqantity() }} in cart -->
+                  {{cartItem.quantity}} ittems added
+                </div>
+                <div class="col-2">
+                  <button (click)="addToCart(cartItem);$event.stopPropagation()" class="btn btn-secondary btn-block"> + </button>
+                  </div>
+              </div>
+           
+           
+           
+            </td>
+
+
+            <td>{{cartItem.price}}</td>
+            <td>{{cartItem.price*cartItem.quantity}}</td>
+            <!-- <td><a class="btn btn-danger" (click)="deleteCartItem(cartItem.cid)">Delete</a></td> -->
+          </tr>
+        </tbody>
+      
+  </table>
+  <div class="container">
+    <button class="btn btn-primary" routerLink="/order-succesful" id="checkoutbtn">Checkout</button>
+    </div>
+</div>
+ 
