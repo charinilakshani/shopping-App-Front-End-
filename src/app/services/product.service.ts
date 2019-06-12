@@ -9,8 +9,8 @@ import { Products } from '../model/products';
 export class ProductService {
 
   constructor(private http: HttpClient) { }
-  // url = "/api/products";
-       url ="http://localhost:8080/products"
+  url = "/api/products";
+      //  url ="http://localhost:8080/products"
 
   addNewProduct(Products) {
     console.log( Products);

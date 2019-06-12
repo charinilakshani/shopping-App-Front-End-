@@ -35,7 +35,7 @@ export class ProductsComponent  implements OnInit,OnDestroy {
 
         
 
-  //  this.categories$ = categoryservice.getCategory();
+   this.categories$ = categoryservice.getCategory();
    
    this.productservice.getAllProducts()
     .subscribe(products =>{

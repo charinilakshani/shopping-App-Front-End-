@@ -11,9 +11,9 @@ export class CategoryService {
 
   constructor(private http:HttpClient) { 
   }
-  // url="/api/allcategory/"
-  // getCategory() {
-  //   console.log("get categroy",this.http.get<Category[]>(this.url));
-  //   return this.http.get<Category[]>(this.url);  
-  // }
+  url="/api/category"
+  getCategory() {
+    console.log("get categroy",this.http.get<Category[]>(this.url));
+    return this.http.get<Category[]>(this.url);  
+  }
 }

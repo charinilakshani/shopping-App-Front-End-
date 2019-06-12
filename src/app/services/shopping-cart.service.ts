@@ -11,9 +11,12 @@ export class ShoppingCartService {
 
   constructor(private http: HttpClient) { }
  
-  // url="/api/carts";
-  url ="http://localhost:8080/user/carts"
-  url1 ="http://localhost:8080/user/checkOut"
+  url="/api/user/carts";
+  // url ="http://localhost:8080/user/carts"
+  url1 ="/api/user/checkOut"
+  url3 = "/api/user/history"
+  url4 ="/api/user/carts/deleteAll"
+  url5 ="/api/user/checkOut/deleteAll"
   cartitem:Cart
   
   getCartOnebyOne(cartid){
@@ -40,20 +43,37 @@ export class ShoppingCartService {
    }
   
 getbyuserId(userId){
-  console.log("get all products",userId)
+  console.log("get all productsssssssssss",userId)
   return this.http.get<Cart>(this.url+ `/${userId}`);
 
 }
-   removeFromCart(pId){
-    console.log(" remove cart ",pId);
-    return this.http.delete(this.url+pId);
+   removeFromCart(cartId){
+    console.log(" remove cart ",cartId);
+    return this.http.delete(this.url+ `/${cartId}`);
 
    }
+
+   deleteByUserId(userId){
+    console.log(" remove cart ",userId);
+    return this.http.delete(this.url4+ `/${userId}`);
+
+   }
+
+   deleteAllCheckOut(userId){
+    console.log(" remove cart ",userId);
+    return this.http.delete(this.url5+ `/${userId}`);
+
+   }
+
    addItemsToCart(cartItems : Cart[]) {
-
     return this.http.post<Cart> (this.url+"add/items", cartItems);
-
   }
+
+
+
+
+
+
   // addToCart(cartitem){
   //    let Id = cartitem.cartId;
   //    console.log("cart Id",Id);
@@ -74,16 +94,20 @@ getbyuserId(userId){
 
   getOrderHisotry(userId){
     console.log("get all products",userId)
-    return this.http.get<Cart>(this.url1+ `/${userId}`);
+    return this.http.get<Cart>(this.url3+ `/${userId}`);
   
   }
 
   
-  addToHistory(cartItems : Cart[]) {
+  addToCheckOut(cartItems : Cart[]) {
     return this.http.post<Cart> (this.url1, cartItems);
 
   }
  
+  addToHistory(cartItems : Cart[]) {
+    return this.http.post<Cart> (this.url3, cartItems);
+
+  }
   }
 
 

@@ -8,8 +8,9 @@ import { RegisterUser } from '../model/registerUser';
 export class RegisterUserService {
 
   constructor(private http: HttpClient) { }
-  // url = "/api/user";
-  url = "http://localhost:8081/user"
+  // url = "/api/user/";
+  url = "/api/user/";
+  // url = "http://localhost:8080/user/"
   
   addNewUser(users) {
     console.log( "from service",users);

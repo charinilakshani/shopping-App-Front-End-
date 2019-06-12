@@ -4,5 +4,6 @@ export interface  shoppingCart{
     productName: String;
     quntity: number;
     productPrice: number;
+    productImage:String;
 
 }

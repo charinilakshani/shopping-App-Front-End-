@@ -5,4 +5,5 @@ export interface Cart {
     productName: string,
     quantity: number,
     price: number,
+    productImage:String,
 }

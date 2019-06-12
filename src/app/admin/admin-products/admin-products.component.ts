@@ -28,6 +28,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
       this.products
         console.log("query value", query);
   }
+  
   ngOnDestroy() {
     this.subscription.unsubscribe();
 

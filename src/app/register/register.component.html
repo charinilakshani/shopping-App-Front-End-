@@ -1,3 +1,5 @@
+<h2> Register with the system</h2>
+
 <form #f="ngForm" (ngSubmit)="save(f.value)">
   <div class="row">
     <div class="col-md-6">
@@ -8,36 +10,50 @@
         <label for="firstName">firstName</label>
         <input ngModel name="firstName"  id="firstName" type="text"
           class="form-control" required>
-        <!-- <div class="alert alert-danger " *ngIf="firstName.touched && firstName.invalid">
+         <div class="alert alert-danger " *ngIf="firstName.touched && firstName.invalid">
        enter FirstName
-        </div> -->
+        </div> 
       </div>
       <div class="form-group">
         <label for="secondName">secondName</label>
         <input ngModel  name="secondName" id="secondName" type="text"
           class="form-control" required>
-        <!-- <div class="alert alert-danger " *ngIf="secondName.touched && secondName.invalid"> -->
-       <!-- enter Second Name
-        </div> -->
+        <div class="alert alert-danger " *ngIf="secondName.touched && secondName.invalid"> -->
+             enter Second Name
+        </div> 
 
         </div>
         <div class="form-group">
         <label for="email">email</label>
         <input ngModel name="email" id="email" type="text"
           class="form-control" required>
-        <!-- <div class="alert alert-danger " *ngIf="email.touched && email.invalid"> -->
-      <!-- email
-        </div> -->
+        <div class="alert alert-danger " *ngIf="email.touched && email.invalid"> -->
+       email
+        </div> 
         </div>
         <div class="form-group">
         <label for="password">password</label>
         <input ngModel name="password" id="password" type="text"
           class="form-control" required>
-        <!-- <div class="alert alert-danger " *ngIf="password.touched && password.invalid">
+        <div class="alert alert-danger " *ngIf="password.touched && password.invalid">
           password
-        </div> -->
         </div>
+        </div>
+        <div class="form-group">
+          <label for="type">registerType</label>
+          <select ngModel name="type" id="type" type="text"
+            class="form-control" required>
+            <option value="user">user</option>
+            <option value="admin">admin</option>
+
+        </select>
+          <div class="alert alert-danger " *ngIf="password.touched && password.invalid">
+            password
+          </div>
+          </div>
+
       <button class="btn btn-primary"> save </button>
+
     </div>
    
 

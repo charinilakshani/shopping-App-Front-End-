@@ -6,7 +6,7 @@ import { Cart } from '../model/cart';
   providedIn: 'root'
 })
 export class CheckoutService {
-  url ="http://localhost:8080/user/checkOut"
+  url ="/api/user/checkOut"
   cartitem:Cart
 
   constructor(private http: HttpClient) { }

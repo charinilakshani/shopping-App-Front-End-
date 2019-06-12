@@ -54,14 +54,17 @@ export class ProductCartComponent  {
         cart.quantity = 1;
         cart.productName = products.productName;
         cart.price = products.price;
+        cart.productImage =products.image;
       
         this.cartservice.addToCart(cart);
-        this.cartservice.getbyuserId(registerUser.userId).subscribe(res => {
-          this.cartList = res;
-          this.cartLength = this.cartList.length;
 
-          console.log("cart length",this.cartLength)
-          this.calcTotal();
+        this.cartservice.getbyuserId(registerUser.userId).subscribe(res => {
+          this.cartItem = res;
+          let cart =<Cart> new Object();
+          cart.quantity =this.cartItem.quantity;
+
+          console.log("cart length",cart)
+       
   
         })
   
@@ -72,17 +75,27 @@ export class ProductCartComponent  {
         // this.cartservice.addToCart(cart);
       }
      
-      calcTotal() {
-        for(let cartItem of this.cartList){
-          this.total = cartItem.quantity*cartItem.price + this.total;
-        }
-      }
     
 
-  getQuqantity(pId) {
+  getQuqantity() {
+
+    
+     
+
+
+
+
+     
+
+     
+  
+    
+ let cartLenth = 4
+   
+
     // let item =this.shoppingCart[this.products.pId]
     // console.log("get item");
-    //  return item ?item.quantity:0
+    //  return cartLenth;
   }
   
 
@@ -102,6 +115,7 @@ export class ProductCartComponent  {
       cart.quantity = -1;
       cart.productName = products.productName;
       cart.price = products.price;
+      cart.productImage =products.image;
       this.cartservice.addToCart(cart);
 
   })

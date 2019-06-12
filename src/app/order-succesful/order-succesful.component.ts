@@ -52,11 +52,42 @@ calcTotal() {
   }
 }
 
-checkout(){
+addToHistory(){
   console.log(" check out")
   this.cartservice.addToHistory(this.cartList).subscribe(res =>{
     console.log("added to check out",res)
+    this.deleteAllCart();
+    this.deleteOrderSussfull();
   })
+}
+
+
+deleteAllCart(){
+  let user = sessionStorage.getItem('email');
+  this.authenticationservice.authenticated(user).subscribe(data => {
+    this.userId = data;
+    let registerUser = <RegisterUser>new Object();
+    registerUser.userId = this.userId.userId;
+   
+    this.cartservice.deleteByUserId(registerUser.userId).subscribe(res =>{
+      console.log("Delete all sussfull")
+    })
+})
+
+}
+
+deleteOrderSussfull(){
+  let user = sessionStorage.getItem('email');
+  this.authenticationservice.authenticated(user).subscribe(data => {
+    this.userId = data;
+    let registerUser = <RegisterUser>new Object();
+    registerUser.userId = this.userId.userId;
+   
+    this.cartservice.deleteAllCheckOut(registerUser.userId).subscribe(res =>{
+      console.log("Delete all sussfull")
+    })
+})
+
 }
 }
  

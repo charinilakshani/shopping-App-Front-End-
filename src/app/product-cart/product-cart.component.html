@@ -3,8 +3,8 @@
   <div class="card-body">
     <h5 class="card-title">{{products.productName}}</h5>
     <h5 class="card-title">{{products.price}}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-      content.</p>
+    <p class="card-text">
+ </p>
   </div>
   <div  *ngIf="showActions"  class="card-footer">
     <button   *ngIf =" getQuqantity ===0; else updateQuantity " (click)="addToCart(products)"  class="btn btn-primary btn-block">Add to cart</button>
@@ -15,7 +15,7 @@
         class="btn btn-secondary btn-block"> - </button>
         </div>
         <div class="col text-center">
-          {{ getQuqantity(products.pId) }} in cart
+          {{ getQuqantity() }} in cart
         </div>
         <div class="col-2">
           <button (click)="addToCart(products);$event.stopPropagation()" class="btn btn-secondary btn-block"> + </button>

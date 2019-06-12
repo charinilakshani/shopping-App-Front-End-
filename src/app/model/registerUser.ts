@@ -4,4 +4,5 @@ export interface RegisterUser {
 	secondName: string;
 	email:string;
 	password: string;
+	type:string
 }

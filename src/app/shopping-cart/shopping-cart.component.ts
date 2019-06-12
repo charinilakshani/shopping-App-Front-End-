@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { Cart } from '../model/cart';
 import { Products } from '../model/products';
@@ -25,6 +25,7 @@ export class ShoppingCartComponent implements OnInit {
   userId;
   cartLength
   cartList
+  cartList2
 
   ngOnInit() {
     let user = sessionStorage.getItem('email')
@@ -68,10 +69,35 @@ export class ShoppingCartComponent implements OnInit {
   }
 
 
-  deleteCartItem(pid) {
-    // this.cartservice.removeFromCart(pid).subscribe(res => this.cartItems = <Cart[]>res);
+  deleteCartItems(cartId) {
+    console.log(" get cart Id ",cartId)
+    let user = sessionStorage.getItem('email')
+    this.cartservice.removeFromCart(cartId).subscribe(res => 
+      this.cartItems = <Cart[]>res);
+      console.log("get alll",)
 
-  }
+      this.authenticationservice.authenticated(user).subscribe(data => {
+        this.userId = data;
+        let registerUser = <RegisterUser>new Object();
+        registerUser.userId = this.userId.userId;
+  
+        this.cartservice.getbyuserId(registerUser.userId).subscribe(data => {
+        this.cartItems = data;
+  
+        })
+  
+        this.cartservice.getbyuserId(registerUser.userId).subscribe(res => {
+          this.cartList2 = res;
+          this.cartLength = this.cartList2.length;
+  
+          console.log("cart length",this.cartList2)
+          // this.calcTotal();
+  
+        })
+        // this.cartservice.addToCart(cart);
+      })
+
+    }
   getQuqantity() {
 
   }
@@ -168,8 +194,22 @@ export class ShoppingCartComponent implements OnInit {
     })
   
   }
-  
 
-   
+  
+  addToHsitory(){
+    console.log(" check out")
+    this.cartservice.addToCheckOut(this.cartList).subscribe(res =>{
+      console.log("added to check out",res)
+    
+    })
+  }
+
+
+  
+  checkout(){
+    console.log("checkOut workign")
+    this.addToHsitory()
+  }
+
   
 }
